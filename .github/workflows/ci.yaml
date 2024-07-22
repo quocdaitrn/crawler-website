@@ -5,6 +5,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 
+# trigger on PR
 on:
   pull_request:
     branches:
