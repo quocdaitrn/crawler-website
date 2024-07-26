@@ -44,3 +44,19 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+        
+      - name: Extract metadata (tags, labels) for Docker - latest
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: daitran2010/crawler-website
+          tags: |
+            type=raw,value=latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
